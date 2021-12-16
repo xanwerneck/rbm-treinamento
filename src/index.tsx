@@ -2,15 +2,39 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { store } from './app/store';
-import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import { RMBTheme } from './themes/Theme';
+import { ThemeProvider } from '@mui/material';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ContasAPagar from './components/ContasAPagar/ContasAPagar';
+import Home from './components/Home/Home';
+import { UserContext } from './helpers/UserContext';
+import User from './models/User';
+
+const UserLogged = new User(
+  'Alexandre',
+  'XXssAA',
+  'xanwerneck@gmail.com'
+)
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+      <ThemeProvider
+      theme={RMBTheme}
+      >
+        <BrowserRouter>
+          <UserContext.Provider value={UserLogged} >
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<Home />} />
+              <Route path="contasapagar">
+                <Route index element={<ContasAPagar />} />
+              </Route>
+            </Route>
+          </Routes>
+          </UserContext.Provider>
+        </BrowserRouter>
+      </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
