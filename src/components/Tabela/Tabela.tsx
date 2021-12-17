@@ -15,17 +15,15 @@ class UserRbm implements IUser
     }
 }
 
-export default function Tabela()
+export default function Tabela(props : {nUsers : Number})
 {
     const [users, setUsers] = useState(new Array<UserRbm>())
     useEffect(() => {
         const newUsers : Array<UserRbm> = new Array<UserRbm>() 
-        let user : UserRbm = new UserRbm('1', 'Alexandre 1', 'xanwerneck1@gmail.com')
-        newUsers.push(user)
-        user = new UserRbm('2', 'Alexandre 2', 'xanwerneck2@gmail.com')
-        newUsers.push(user)
-        user = new UserRbm('3', 'Alexandre 3', 'xanwerneck3@gmail.com')
-        newUsers.push(user)
+        for (let index = 0; index < props.nUsers; index++) {
+            let user : UserRbm = new UserRbm('2', 'Alexandre 2', 'xanwerneck2@gmail.com')
+            newUsers.push(user)            
+        }
         setUsers(newUsers)
     }, [])
     return (
