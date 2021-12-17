@@ -1,11 +1,17 @@
 import { useState } from 'react';
 
 export default function SaldoCalculado() {
-    const [blabla, setBlabla] = useState(1000)
+    const [value, setValue] = useState(0)
 
     return (
-        <p onClick={() => setBlabla(blabla + 1)}>
-            {blabla}
-        </p>
+        <div>
+            <input type="number" value={value} onChange={(e) => setValue(parseInt(e.target.value))} />
+            <button onClick={() => setValue(0)}>
+                Limpar
+            </button>
+            <p onClick={() => setValue(value + 1)}>
+                {value}
+            </p>
+        </div>
         )
 }

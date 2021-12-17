@@ -13,6 +13,7 @@ test('do example test', () => {
     const resultadoHtml: HTMLElement | null =
         result.container.getElementsByTagName('div').item(0);
 
+
     expect(resultadoHtml).not.toBeNull();
     expect(resultadoHtml?.textContent).toBe('Saldo R$ 1100,00');
 
