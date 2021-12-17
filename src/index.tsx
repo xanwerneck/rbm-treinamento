@@ -14,7 +14,7 @@ import User from './models/User';
 const UserLogged = new User(
   'Alexandre',
   'XXssAA',
-  'xanwerneck@gmail.com'
+  'Thiago@gmail.com'
 )
 
 ReactDOM.render(
@@ -38,6 +38,21 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+/*
+ReactDOM.render(
+  <React.StrictMode>
+      <ThemeProvider
+      theme={RMBTheme}
+      >
+          <UserContext.Provider value={UserLogged} >
+            <App/>
+          </UserContext.Provider>
+      </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+*/
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components\\ContasAPagar",
+    "\\src\\components\\Context",
+    "\\src\\components\\Home",
+    "\\src\\components\\Inscritos",
+    "\\src\\components\\Saldo",
+    "\\src\\components\\SaldoCalculado",
+    "\\src\\models\\interfaces"
+  ],
+  "SelectedNode": "\\src\\index.tsx",
+  "PreviewInSolutionExplorer": false
+}
