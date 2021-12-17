@@ -18,6 +18,7 @@ function App() {
       <Header />
       <Box sx={{bgcolor : '#ffffff', m: 1, height: 1}}>
         <Box>
+          <Outlet />
         </Box>   
       </Box>   
     </Box>
