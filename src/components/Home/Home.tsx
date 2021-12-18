@@ -1,20 +1,12 @@
-import AddPlanoConta from "../AddPlanoConta/AddPlanoConta";
-import VisualizarSaldo from "../VisualizaSaldo/VisualizaSaldo";
+import { useEffect } from "react"
+import { setPlanoDeContas } from "../../models/firestore/PlanoDeContasStore"
+import PlanoDeContas from "../../models/PlanoDeContas"
+import Receitas from "../Receitas/Receitas";
 
 export default function Home(){
     return (
         <div>
-            {/* <p>
-                <b>Consulta Saldo do Usuário</b>
-            </p>
-            <hr />
-            <VisualizarSaldo/><br></br> */}
-
-            <p>
-                <b>Adicionar Plano de Conta</b>
-            </p>
-            <hr />
-            <AddPlanoConta/> 
+            <Receitas />
         </div>
     )
 }
