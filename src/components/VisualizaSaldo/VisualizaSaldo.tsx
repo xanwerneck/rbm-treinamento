@@ -36,7 +36,14 @@ const rows = [
 export default function VisualizarSaldo() {
 
   getReceitas();
-  let receitas = getReceitas();
+  var receitas : number = 0
+  getReceitas()
+  .then((r) => {
+    r.map((receita) => {
+      receitas = receitas + (receita.valor as number)
+    })
+  })
+  .catch()
   console.log(receitas);
 
 
