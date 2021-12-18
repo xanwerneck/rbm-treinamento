@@ -14,8 +14,6 @@ export default function AddPlanoConta() {
     const [seguraConta, attConta] = useState('');
     const [seguraStatus, attStatus] = useState(false);
 
-    const opcao = [{value : true, label : "True"},{value : false, label : "False"}]
-
     const atualiza = () => {
         setPlanoDeContas(new PlanoDeContas(seguraConta, seguraCod, seguraStatus));
         console.log(getPlanoDeContas());
