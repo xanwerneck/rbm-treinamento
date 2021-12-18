@@ -3,9 +3,9 @@ import { firestoreDB } from '../../config/DataBase';
 import { IReceitas } from '../interfaces/IReceitas';
 
 export async function getReceitas() {
-    const receitas = collection(firestoreDB, 'receitas');
+    const receitas = collection(firestoreDB, 'contasareceber');
     const receitasDocs = await getDocs(receitas);
-    const receitasList = receitasDocs.docs.map(doc => doc.data());
+    const receitasList = receitasDocs.docs.map(doc => (doc.data() as IReceitas));
     return receitasList;
 }
 

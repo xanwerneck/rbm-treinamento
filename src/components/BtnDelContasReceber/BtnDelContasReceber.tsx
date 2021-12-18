@@ -13,6 +13,7 @@ export default function BtnDelContasReceber(){
     
     const excluirUsuario = () => {
         setOpen(false)
+        
         setSucesso(true);
     }
 
