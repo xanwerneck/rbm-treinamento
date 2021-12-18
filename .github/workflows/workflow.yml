@@ -23,5 +23,4 @@ jobs:
     - name: Running React tests
       working-directory: "frontend"
       run: |
-        npm ci
         npm test
