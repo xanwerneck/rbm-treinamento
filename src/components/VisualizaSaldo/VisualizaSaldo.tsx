@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useState,useEffect} from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,6 +9,10 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { RMBTheme } from "../../themes/Theme";
 import { getPlanoDeContas } from '../../models/firestore/PlanoDeContasStore';
+import { firestoreDB } from '../../config/DataBase';
+
+
+
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
@@ -25,10 +29,15 @@ function createData(despesa: number, receita: number) {
 }
 
 const rows = [
-  createData(500, 600),
+  createData(9000, 5555),
 ];
 
 export default function VisualizarSaldo() {
+
+  getPlanoDeContas();
+  console.log(getPlanoDeContas);
+
+
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: RMBTheme.palette.primary.main,
@@ -39,33 +48,27 @@ export default function VisualizarSaldo() {
     },
   }));
   return (
-    <div>
-      <p>
-        {getPlanoDeContas}
-      </p>
-      <br />
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-          <TableHead>
-            <TableRow>
-              <StyledTableCell >Despesa </StyledTableCell>
-              <StyledTableCell >Receita</StyledTableCell>
-              <StyledTableCell >Saldo</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-                          <StyledTableRow key={row.despesa}>
+    <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <StyledTableCell >Despesa </StyledTableCell>
+            <StyledTableCell >Receita</StyledTableCell>
+            <StyledTableCell >Saldo</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+                        <StyledTableRow key={row.despesa}>
 
-                <StyledTableCell>R${row.despesa}</StyledTableCell>
-                <StyledTableCell>R${row.receita}</StyledTableCell>
-                <StyledTableCell>R${row.receita - row.despesa}</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </div>
+              <StyledTableCell>R$ {row.despesa}</StyledTableCell>
+              <StyledTableCell>R$ {row.receita}</StyledTableCell>
+              <StyledTableCell>R$ {row.receita - row.despesa}</StyledTableCell>
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
     
   );
 }
