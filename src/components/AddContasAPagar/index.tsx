@@ -8,22 +8,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import Stack from '@mui/material/Stack';
 import { IPlanoDeContas } from '../../models/interfaces/IPlanoDeContas';
 import { getContaAPagar, getPlanoDeContas, setContaAPagar } from '../../models/firestore/PlanoDeContasStore';
-import { IContasAPagar } from '../../models/interfaces/IContasAPagar';
-
-class ContaAPagar implements IContasAPagar {
-	descricao: string;
-	valor: number;
-	contapagar: IPlanoDeContas;
-	data: Date;
-	status: boolean;
-	public constructor(_descricao: string, _valor: number, _contapagar: IPlanoDeContas, _data: Date) {
-		this.descricao = _descricao;
-		this.valor = _valor;
-		this.contapagar = _contapagar;
-		this.data = _data;
-		this.status = true;
-	}
-}
+import { ContaAPagar } from '../../models/ContaAPagar';
 
 export default function AddContasAPagar() {
 	const [planosdecontas, setPlanodecontas] = useState(new Array<IPlanoDeContas>()); // O que ta no banco
@@ -39,7 +24,7 @@ export default function AddContasAPagar() {
 	}
 
 	useEffect(() => {
-		// console.log('undefined?', getContaAPagar());
+		console.log('undefined?', getContaAPagar());
 		getPlanoDeContas()
 			.then((data) => setPlanodecontas(data))
 			.catch();
