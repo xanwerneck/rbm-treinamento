@@ -2,34 +2,26 @@ import * as React from 'react';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 90 },
+  { field: 'descricao', headerName: 'Descrição', width: 90 },
   {
-    field: 'firstName',
-    headerName: 'First name',
+    field: 'data',
+    headerName: 'Data',
     width: 150,
-    editable: true,
   },
   {
-    field: 'lastName',
-    headerName: 'Last name',
+    field: 'status',
+    headerName: 'Status',
     width: 150,
-    editable: true,
   },
   {
-    field: 'age',
-    headerName: 'Age',
-    type: 'number',
+    field: 'plano',
+    headerName: 'Plano de Contas',
     width: 110,
-    editable: true,
   },
   {
-    field: 'fullName',
-    headerName: 'Full name',
-    description: 'This column has a value getter and is not sortable.',
-    sortable: false,
-    width: 160,
-    valueGetter: (params: GridValueGetterParams) =>
-      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+    field: 'valor',
+    headerName: 'Valor',
+    width: 160
   },
 ];
 
