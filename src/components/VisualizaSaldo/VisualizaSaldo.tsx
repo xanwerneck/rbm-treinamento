@@ -7,8 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { RMBTheme } from "../../themes/Theme";
-
-
+import { getPlanoDeContas } from '../../models/firestore/PlanoDeContasStore';
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
