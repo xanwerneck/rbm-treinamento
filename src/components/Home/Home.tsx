@@ -8,8 +8,8 @@ export default function Home(){
                 <b>Consulta Saldo do Usuário</b>
             </p>
             <hr />
-            {/* <VisualizarSaldo/><br></br> */}
-            <AddPlanoConta/>
+            <VisualizarSaldo/><br></br>
+            <AddPlanoConta/> 
         </div>
     )
 }
