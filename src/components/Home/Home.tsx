@@ -4,11 +4,16 @@ import VisualizarSaldo from "../VisualizaSaldo/VisualizaSaldo";
 export default function Home(){
     return (
         <div>
-            <p>
+            {/* <p>
                 <b>Consulta Saldo do Usuário</b>
             </p>
             <hr />
-            <VisualizarSaldo/><br></br>
+            <VisualizarSaldo/><br></br> */}
+
+            <p>
+                <b>Adicionar Plano de Conta</b>
+            </p>
+            <hr />
             <AddPlanoConta/> 
         </div>
     )
