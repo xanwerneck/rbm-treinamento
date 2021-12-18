@@ -39,26 +39,33 @@ export default function VisualizarSaldo() {
     },
   }));
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell >Receita</StyledTableCell>
-            <StyledTableCell >Despesa </StyledTableCell>
-            <StyledTableCell >Total</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-                        <StyledTableRow key={row.despesa}>
+    <div>
+      <p>
+        {getPlanoDeContas}
+      </p>
+      <br />
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell >Despesa </StyledTableCell>
+              <StyledTableCell >Receita</StyledTableCell>
+              <StyledTableCell >Saldo</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+                          <StyledTableRow key={row.despesa}>
 
-              <StyledTableCell>R${row.receita}</StyledTableCell>
-              <StyledTableCell>R${row.despesa}</StyledTableCell>
-              <StyledTableCell>R${row.receita - row.despesa}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                <StyledTableCell>R${row.despesa}</StyledTableCell>
+                <StyledTableCell>R${row.receita}</StyledTableCell>
+                <StyledTableCell>R${row.receita - row.despesa}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+    
   );
 }
