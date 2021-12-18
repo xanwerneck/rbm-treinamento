@@ -19,11 +19,14 @@ export default function AddPlanoConta() {
           description: `For each ad campaign that you create, you can control how much
                     you're willing to spend on clicks and conversions, which networks
                     and geographical locations you want your ads to show on, and more.`,
+          value: seguraDados[0],
+          atualiza: (x:string)=>attDados([x,seguraDados[1],seguraDados[2]]),
         },
         {
           label: 'Código da Conta',
           description:
             'An ad group contains one or more ads which target a shared set of keywords.',
+          value: seguraDados[1],
           
         },
         {
@@ -32,6 +35,7 @@ export default function AddPlanoConta() {
                     and learn how to enhance your ads using features like ad extensions.
                     If you run into any problems with your ads, find out how to tell if
                     they're running and how to resolve approval issues.`,
+          value: seguraDados[2],
         },
       ];
 
@@ -65,7 +69,7 @@ export default function AddPlanoConta() {
             </StepLabel>
             <StepContent>
               <Typography>{step.description}</Typography>
-              <input type="text" value={}/>
+              <input type="text" value={step.value}/>
               <Box sx={{ mb: 2 }}>
                 <div>
                   <Button
