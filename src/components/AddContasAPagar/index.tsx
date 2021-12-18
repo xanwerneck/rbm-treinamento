@@ -39,7 +39,7 @@ export default function AddContasAPagar() {
 	}
 
 	useEffect(() => {
-		console.log('undefined?', getContaAPagar());
+		// console.log('undefined?', getContaAPagar());
 		getPlanoDeContas()
 			.then((data) => setPlanodecontas(data))
 			.catch();
