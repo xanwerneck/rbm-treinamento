@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { setPlanoDeContas } from "../../models/firestore/PlanoDeContasStore";
+import SelectInput from "@mui/material/Select/SelectInput";
 import { IPlanoDeContas } from "../../models/interfaces/IPlanoDeContas";
 
 export default function AddPlanoConta() {
@@ -13,6 +14,9 @@ export default function AddPlanoConta() {
     const [seguraCod, attCod] = useState('');
     const [seguraConta, attConta] = useState('');
     const [seguraStatus, attStatus] = useState(false);
+    const opcao = [
+      { value: true, label: 'True'},
+      { value: false, label: 'False'}]
 
     const atualiza = () => {
 
@@ -32,10 +36,7 @@ export default function AddPlanoConta() {
             <br></br><br></br>
             <label>Status da Conta</label>
             <br></br>
-            <select name="select">
-                <option value="valor1" selected>True</option>
-                <option value="valor2">False</option>
-            </select>
+            <select name="select" multi options={opcao}/>
             {/* <input type = "text" placeholder='Digite o Tipo da Conta'></input> */}
 
             <br></br><br></br>
