@@ -9,12 +9,19 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 export default function BtnDelContasReceber(){
     const [open, setOpen] = React.useState(false);
+    const [sucesso, setSucesso] = React.useState(false);
+    
+    const excluirUsuario = () => {
+        setOpen(false)
+        setSucesso(true);
+    }
 
     const handleClickOpen = () => {
         setOpen(true);
       };
     
       const handleClose = () => {
+        setSucesso(false);
         setOpen(false);
       };
 
@@ -40,6 +47,27 @@ export default function BtnDelContasReceber(){
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color = 'error'>Cancelar</Button>
+          <Button onClick={excluirUsuario} autoFocus>
+            Continuar
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={sucesso}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          <b>{"Sucesso"}</b>
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+           Usuario foi excluido
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
           <Button onClick={handleClose} autoFocus>
             Continuar
           </Button>
