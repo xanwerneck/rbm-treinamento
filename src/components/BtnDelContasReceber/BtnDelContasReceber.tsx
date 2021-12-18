@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 export default function BtnDelContasReceber(){
     return (
         <Stack spacing={2} direction="row">
-          <Button variant="contained" color="error">Excluir</Button>
+          <Button variant="contained" color="error" onClick={() => { alert('Excluido') }}>Excluir</Button>
         </Stack>
       );
 }
