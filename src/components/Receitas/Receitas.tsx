@@ -4,6 +4,7 @@ import { getReceitas } from "../../models/firestore/ReceitasStore";
 import { IReceitas } from "../../models/interfaces/IReceitas";
 
 const columns: GridColDef[] = [
+  { field: "id", headerName: "ID", width: 90 },
   { field: "descricao", headerName: "Descrição", width: 90 },
   {
     field: "data",
@@ -28,19 +29,32 @@ const columns: GridColDef[] = [
 ];
 
 export default function Receitas() {
-  const [rows, setRows] = React.useState([]);
+  const [rows, setRows] = React.useState(new Array<IReceitas>());
 
-    // setRows(getReceitas());
+  React.useEffect(() => {
+    getReceitas().then((data) => {
+      let regs = data.map((d, i) => {
+        let reg = { ...d };
+        reg.id = i;
+        return reg;
+      });
+      setRows(regs);
+    });
+  }, []);
+
+
   return (
     <div style={{ height: 400, width: "100%" }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-        disableSelectionOnClick
-      />
+      {rows.length > 0 ? (
+        <DataGrid
+          rows={rows}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+          checkboxSelection
+          disableSelectionOnClick
+        />
+      ) : null}
     </div>
   );
 }
