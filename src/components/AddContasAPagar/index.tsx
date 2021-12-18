@@ -21,10 +21,14 @@ export default function AddContasAPagar() {
 	function handleSubmit(event: any) {
 		event.preventDefault();
 		setContaAPagar(new ContaAPagar(descricao, valor, planoEscolhido, data));
+		setData(new Date());
+		setDescricao('');
+		setValor(0);
+		setPlanoEscolhido({ nome: '', tipo: '', status: true });
 	}
 
 	useEffect(() => {
-		console.log('undefined?', getContaAPagar());
+		// console.log('undefined?', getContaAPagar());
 		getPlanoDeContas()
 			.then((data) => setPlanodecontas(data))
 			.catch();
