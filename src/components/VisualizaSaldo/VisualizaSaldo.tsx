@@ -8,7 +8,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { RMBTheme } from "../../themes/Theme";
+<<<<<<< HEAD
 
+=======
+import { getPlanoDeContas } from '../../models/firestore/PlanoDeContasStore';
+>>>>>>> 95cb7bb5d7edccceb97a77832d333ed668edfeaf
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
@@ -39,6 +43,7 @@ export default function VisualizarSaldo() {
     },
   }));
   return (
+<<<<<<< HEAD
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
@@ -60,5 +65,37 @@ export default function VisualizarSaldo() {
         </TableBody>
       </Table>
     </TableContainer>
+=======
+    <div>
+      <p>
+        {getPlanoDeContas()}
+      </p>
+      <br />
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell >Despesa </StyledTableCell>
+              <StyledTableCell align="right">Receita</StyledTableCell>
+              <StyledTableCell align="right">Soma Total</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+                          <StyledTableRow key={row.descricao}>
+
+                <StyledTableCell component="th" scope="row">
+                  {row.descricao}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.valor} R$</StyledTableCell>
+                <StyledTableCell align="right">{row.soma}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+    
+>>>>>>> 95cb7bb5d7edccceb97a77832d333ed668edfeaf
   );
 }
