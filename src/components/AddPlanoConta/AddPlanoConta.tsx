@@ -17,7 +17,7 @@ export default function AddPlanoConta() {
     const opcao = [{value : true, label : "True"},{value : false, label : "False"}]
 
     const atualiza = () => {
-        setPlanoDeContas(new PlanoDeContas(seguraCod, seguraConta, seguraStatus));
+        setPlanoDeContas(new PlanoDeContas(seguraConta, seguraCod, seguraStatus));
         console.log(getPlanoDeContas());
         alert('Plano de Conta adicionado com Sucesso!');
     }
