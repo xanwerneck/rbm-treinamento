@@ -1,17 +1,6 @@
 import { useState } from "react";
 import { setPlanoDeContas } from "../../models/firestore/PlanoDeContasStore";
-import { IPlanoDeContas } from "../../models/interfaces/IPlanoDeContas";
-
-class Placon implements IPlanoDeContas{
-  nome: string;
-  tipo: string;
-  status: boolean;
-  public constructor(_nome: string, _tipo: string, _status: boolean){
-      this.nome = _nome
-      this.tipo = _tipo
-      this.status = _status
-  }
-}
+import PlanoDeContas from "../../models/PlanoDeContas"
 
 export default function AddPlanoConta() {
     
@@ -28,19 +17,19 @@ export default function AddPlanoConta() {
     const opcao = [{value : true, label : "True"},{value : false, label : "False"}]
 
     const atualiza = () => {
-        setPlanoDeContas(new Placon)
+        setPlanoDeContas(new PlanoDeContas(seguraCod, seguraConta, seguraStatus));
     }
 
     return(
         <div>
             <label>Código da Conta</label>
             <br></br>
-            <input type = "text" name="EditCodigo" value={seguraCod} placeholder='Digite o Código da Conta'></input>
+            <input type = "text" name="EditCodigo" value={seguraCod} onChange={(e)=>attCod(e.target.value)} placeholder='Digite o Código da Conta'></input>
 
             <br></br><br></br>
             <label>Nome da Conta</label>
             <br></br>
-            <input type = "text" name="EditNome" value={seguraConta} placeholder='Digite o Nome da Conta'></input>
+            <input type = "text" name="EditNome" value={seguraConta} onChange={(e)=>attConta(e.target.value)} placeholder='Digite o Nome da Conta'></input>
 
             <br></br><br></br>
             <label>Status da Conta</label>
@@ -53,7 +42,7 @@ export default function AddPlanoConta() {
 
             <br></br><br></br>
 
-            <input type = "button" onClick={()=>funcao1()} value={"              Adicionar              "}/>
+            <input type = "button" onClick={atualiza} value={"              Adicionar              "}/>
 
         </div>
 
