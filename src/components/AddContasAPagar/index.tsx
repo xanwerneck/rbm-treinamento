@@ -13,54 +13,57 @@ interface IContasAPagar {
   descricao: string;
   data: Date;
   valor: number;
-  planoConta: IPlanoDeContas;
+  contapagar: IPlanoDeContas;
   status: boolean;
 }
 
 class ContaAPagar implements IContasAPagar {
   descricao: string;
   valor: number;
-  planoConta: IPlanoDeContas;
+  contapagar: IPlanoDeContas;
   data: Date;
   status: boolean;
-  public constructor(_descricao: string, _valor: number, _planoConta: IPlanoDeContas, _data: Date) {
+  public constructor(_descricao: string, _valor: number, _contapagar: IPlanoDeContas, _data: Date) {
     this.descricao = _descricao;
     this.valor = _valor;
-    this.planoConta = _planoConta;
+    this.contapagar = _contapagar;
     this.data = _data;
     this.status = true;
   }
 }
 
-
-/* const ContaAPagar = [
-  {
-    value: '1',
-    label: 'Internet',
-  }, {
-    value: '2',
-    label: 'Luz',
-  },]; */
 export default function AddContasAPagar() {
 
-  const [planosdecontas, setPlanodecontas] = useState(new Array<IPlanoDeContas>());
+  const [planosdecontas, setPlanodecontas] = useState(new Array<IPlanoDeContas>()); // O que ta no banco
+
   const [descricao, setDescricao] = useState('');
-  const [data, setData] = useState(new Date());
-  const [valor, setDate] = useState();
-  const [planoconta, setPlanoconta] = useState<IPlanoDeContas>();
+  const [data, setData] = useState<Date>();
+  const [valor, setValor] = useState(0);
+  const [planoEscolhido, setPlanoEscolhido] = useState<IPlanoDeContas>();
+
+
+  const [contapagar, setContapagar] = useState<Array<ContaAPagar>>([]);
 
   const [currency, setCurrency] = React.useState('');
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCurrency(event.target.value);
   };
 
   function handleSubmit(event: any) {
     event.preventDefault();
-    // new ContaAPagar(descricao, valor, planoconta, data);
+    console.log(descricao);
+    console.log(valor);
+    console.log(contapagar);
+    console.log(data);
+    setContapagar([...contapagar, new ContaAPagar(descricao, valor, planoEscolhido, data)]);
   }
 
 
-
+  useEffect(() => {
+    console.log(contapagar);
+  }
+    , [contapagar]);
 
   useEffect(() => {
     getPlanoDeContas()
@@ -95,13 +98,14 @@ export default function AddContasAPagar() {
             id="outlined-select-currency"
             select
             label="Tipo de Conta"
-            value={planoconta}
-            onChange={handleChange}
+            defaultValue={planosdecontas[0].nome}
+            value={planoEscolhido}
+            onChange={(option: any) => setPlanoEscolhido(option.target.value)}
             helperText="Selecione o tipo de conta"
           >
 
-            {planosdecontas.map((option: IPlanoDeContas) => (
-              <MenuItem key={option.nome} value={option.nome}>
+            {planosdecontas.map((option: IPlanoDeContas, key: number) => (
+              <MenuItem key={key} value={option.nome}>
                 {option.nome}
               </MenuItem>
             ))}
@@ -113,14 +117,14 @@ export default function AddContasAPagar() {
             label="Valor"
             defaultValue=""
             value={valor}
-            onChange={(text) => setDescricao(text.target.value)}
+            onChange={(text) => setValor(parseFloat(text.target.value))}
           />
           <TextField
             id="outlined-required"
-            label="Data"
+            type="date"
             defaultValue=""
             value={data}
-            onChange={(text) => setDescricao(text.target.value)}
+            onChange={(elemento) => setData(elemento.target.value)}
           />
 
         </div>
