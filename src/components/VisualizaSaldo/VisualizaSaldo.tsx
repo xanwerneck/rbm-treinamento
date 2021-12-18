@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -21,12 +20,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(descricao: string, valor: number, soma: number) {
-  return { descricao, valor, soma };
+function createData(despesa: number, receita: number) {
+  return {despesa, receita};
 }
 
 const rows = [
-  createData('Aluguel', 600.68, 500.88),
+  createData(500, 600),
 ];
 
 export default function VisualizarSaldo() {
@@ -44,20 +43,18 @@ export default function VisualizarSaldo() {
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
+            <StyledTableCell >Receita</StyledTableCell>
             <StyledTableCell >Despesa </StyledTableCell>
-            <StyledTableCell align="right">Receita</StyledTableCell>
-            <StyledTableCell align="right">Soma Total</StyledTableCell>
+            <StyledTableCell >Saldo</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-                        <StyledTableRow key={row.descricao}>
+                        <StyledTableRow key={row.despesa}>
 
-              <StyledTableCell component="th" scope="row">
-                {row.descricao}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.valor} R$</StyledTableCell>
-              <StyledTableCell align="right">{row.soma}</StyledTableCell>
+              <StyledTableCell>R${row.receita}</StyledTableCell>
+              <StyledTableCell>R${row.despesa}</StyledTableCell>
+              <StyledTableCell>R${row.receita - row.despesa}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
