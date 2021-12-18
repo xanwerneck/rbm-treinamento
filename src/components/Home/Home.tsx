@@ -1,5 +1,6 @@
 import Context from "../Context/Context";
 import Formulario from "../Formulario/Formulario";
+import FormularioControlado from "../FormularioControlado/FormularioControlado";
 import Residencia from "../Residencia/Residencia";
 import Tabela from "../Tabela/Tabela";
 
@@ -10,7 +11,7 @@ export default function Home(){
                 Esta é a tela que será utilizada para os exercícios ao longo do treinamento. Abaixo dessa tag faça a inserção dos seus componentes...
             </p>
             <hr />
-            <Residencia />
+            <FormularioControlado />
         </div>
     )
 }
