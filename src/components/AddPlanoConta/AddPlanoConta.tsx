@@ -13,8 +13,6 @@ export default function AddPlanoConta() {
 
             <input type = "text" title='Digite o Nome da Conta'></input>
 
-            <br></br><br></br><br></br>
-
             <input type = "text" title='Digite o Tipo da Conta'></input>
 
             <br></br><br></br><br></br>
