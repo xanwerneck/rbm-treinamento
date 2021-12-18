@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { setPlanoDeContas, getPlanoDeContas } from "../../models/firestore/PlanoDeContasStore";
 import PlanoDeContas from "../../models/PlanoDeContas"
+import { Link } from "react-router-dom";
+
+const style = {
+  backgrouncolor: '#005500',
+  padding: 20,
+  borderRadius: 5
+}
 
 export default function AddPlanoConta() {
     
@@ -42,7 +49,9 @@ export default function AddPlanoConta() {
             <br></br><br></br>
 
             <input type = "button" onClick={atualiza} value={"              Adicionar              "}/>
-
+            <label style={style}>
+              <Link to={'/'}> Voltar </Link>
+            </label>
         </div>
 
     )

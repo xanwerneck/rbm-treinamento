@@ -10,6 +10,7 @@ import ContasAPagar from './components/ContasAPagar/ContasAPagar';
 import Home from './components/Home/Home';
 import { UserContext } from './helpers/UserContext';
 import User from './models/User';
+import AddPlanoConta from './components/AddPlanoConta/AddPlanoConta';
 
 const UserLogged = new User(
   'Alexandre',
@@ -29,6 +30,9 @@ ReactDOM.render(
               <Route index element={<Home />} />
               <Route path="contasapagar">
                 <Route index element={<ContasAPagar />} />
+              </Route>
+              <Route path="plano-contas">
+                <Route index element={<AddPlanoConta />} />
               </Route>
             </Route>
           </Routes>
