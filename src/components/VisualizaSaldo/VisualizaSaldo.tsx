@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -7,7 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { RMBTheme } from "../../themes/Theme";
-import { getPlanoDeContas } from '../../models/firestore/PlanoDeContasStore';
+
+
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
@@ -20,7 +22,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 function createData(despesa: number, receita: number) {
-  return {despesa, receita};
+  return { despesa, receita};
 }
 
 const rows = [
@@ -44,7 +46,7 @@ export default function VisualizarSaldo() {
           <TableRow>
             <StyledTableCell >Receita</StyledTableCell>
             <StyledTableCell >Despesa </StyledTableCell>
-            <StyledTableCell >Saldo</StyledTableCell>
+            <StyledTableCell >Total</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
