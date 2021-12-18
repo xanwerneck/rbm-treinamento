@@ -36,7 +36,8 @@ const rows = [
 export default function VisualizarSaldo() {
 
   getReceitas();
-  console.log(getReceitas().valor);
+  let receitas = getReceitas();
+  console.log(receitas);
 
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
