@@ -1,3 +1,4 @@
+import AddPlanoConta from "../AddPlanoConta/AddPlanoConta";
 import VisualizarSaldo from "../VisualizaSaldo/VisualizaSaldo";
 
 export default function Home(){
@@ -7,7 +8,8 @@ export default function Home(){
                 <b>Consulta Saldo do Usuário</b>
             </p>
             <hr />
-            <VisualizarSaldo/>
+            <VisualizarSaldo/><br></br>
+            <AddPlanoConta/>
         </div>
     )
 }
