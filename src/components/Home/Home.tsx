@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { setPlanoDeContas } from "../../models/firestore/PlanoDeContasStore"
 import PlanoDeContas from "../../models/PlanoDeContas"
+import BtnDelContasReceber from "../BtnDelContasReceber/BtnDelContasReceber"
 
 export default function Home(){
     useEffect(
