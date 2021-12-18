@@ -7,30 +7,35 @@ import StepContent from '@mui/material/StepContent';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-
-const steps = [
-  {
-    label: 'Nome da Conta',
-    description: `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`,
-  },
-  {
-    label: 'Código da Conta',
-    description:
-      'An ad group contains one or more ads which target a shared set of keywords.',
-  },
-  {
-    label: 'Tipo da Conta',
-    description: `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`,
-  },
-];
+import { useState } from 'react';
 
 export default function AddPlanoConta() {
-  const [activeStep, setActiveStep] = React.useState(0);
+    
+    const [seguraDados, attDados] = useState(['',0,'']);
+
+    const steps = [
+        {
+          label: 'Nome da Conta',
+          description: `For each ad campaign that you create, you can control how much
+                    you're willing to spend on clicks and conversions, which networks
+                    and geographical locations you want your ads to show on, and more.`,
+        },
+        {
+          label: 'Código da Conta',
+          description:
+            'An ad group contains one or more ads which target a shared set of keywords.',
+          
+        },
+        {
+          label: 'Tipo da Conta',
+          description: `Try out different ad text to see what brings in the most customers,
+                    and learn how to enhance your ads using features like ad extensions.
+                    If you run into any problems with your ads, find out how to tell if
+                    they're running and how to resolve approval issues.`,
+        },
+      ];
+
+    const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -60,6 +65,7 @@ export default function AddPlanoConta() {
             </StepLabel>
             <StepContent>
               <Typography>{step.description}</Typography>
+              <input type="text" value={}/>
               <Box sx={{ mb: 2 }}>
                 <div>
                   <Button
@@ -67,14 +73,14 @@ export default function AddPlanoConta() {
                     onClick={handleNext}
                     sx={{ mt: 1, mr: 1 }}
                   >
-                    {index === steps.length - 1 ? 'Finish' : 'Continue'}
+                    {index === steps.length - 1 ? 'Finalizar' : 'Adicionar'}
                   </Button>
                   <Button
                     disabled={index === 0}
                     onClick={handleBack}
                     sx={{ mt: 1, mr: 1 }}
                   >
-                    Back
+                    Voltar
                   </Button>
                 </div>
               </Box>
