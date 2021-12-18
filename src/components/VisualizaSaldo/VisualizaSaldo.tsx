@@ -29,13 +29,13 @@ function createData(despesa: number, receita: number) {
 }
 
 const rows = [
-  createData(9000, 5555),
+  createData(9000, 10000),
 ];
 
 export default function VisualizarSaldo() {
 
   getPlanoDeContas();
-  console.log(getPlanoDeContas);
+  console.log(getPlanoDeContas());
 
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
