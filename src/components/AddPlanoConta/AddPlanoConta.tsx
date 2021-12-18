@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { setPlanoDeContas } from "../../models/firestore/PlanoDeContasStore";
+import { setPlanoDeContas, getPlanoDeContas } from "../../models/firestore/PlanoDeContasStore";
 import PlanoDeContas from "../../models/PlanoDeContas"
 
 export default function AddPlanoConta() {
@@ -18,6 +18,8 @@ export default function AddPlanoConta() {
 
     const atualiza = () => {
         setPlanoDeContas(new PlanoDeContas(seguraCod, seguraConta, seguraStatus));
+        console.log(getPlanoDeContas());
+        alert('Plano de Conta adicionado com Sucesso!');
     }
 
     return(
