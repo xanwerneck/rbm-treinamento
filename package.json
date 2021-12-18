@@ -1,5 +1,6 @@
 {
   "name": "rmb-gestao-financeira",
+  "homepage": "https://xanwerneck.github.io/rbm-treinamento",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,6 +18,7 @@
     "@types/react-dom": "^16.9.14",
     "@types/react-redux": "^7.1.20",
     "firebase": "^9.6.1",
+    "gh-pages": "^3.2.3",
     "history": "^5.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -26,6 +28,8 @@
     "typescript": "^4.1.6"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
