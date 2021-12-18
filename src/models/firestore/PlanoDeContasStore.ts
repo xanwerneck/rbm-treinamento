@@ -1,8 +1,7 @@
 import { collection, getDocs, setDoc, doc } from 'firebase/firestore/lite';
 import { firestoreDB } from '../../config/DataBase';
-
+import { IContasAPagar } from '../interfaces/IContasAPagar';
 import { IPlanoDeContas } from '../interfaces/IPlanoDeContas';
-import { IContasAPagar } from '../../components/AddContasAPagar';
 
 export async function getPlanoDeContas() {
 	const planodecontas = collection(firestoreDB, 'planodecontas');

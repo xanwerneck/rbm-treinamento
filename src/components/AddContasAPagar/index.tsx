@@ -8,14 +8,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import Stack from '@mui/material/Stack';
 import { IPlanoDeContas } from '../../models/interfaces/IPlanoDeContas';
 import { getContaAPagar, getPlanoDeContas, setContaAPagar } from '../../models/firestore/PlanoDeContasStore';
-
-export interface IContasAPagar {
-	descricao: string;
-	data: Date;
-	valor: number;
-	contapagar: IPlanoDeContas;
-	status: boolean;
-}
+import { IContasAPagar } from '../../models/interfaces/IContasAPagar';
 
 class ContaAPagar implements IContasAPagar {
 	descricao: string;
@@ -40,21 +33,13 @@ export default function AddContasAPagar() {
 	const [valor, setValor] = useState(0);
 	const [planoEscolhido, setPlanoEscolhido] = useState<IPlanoDeContas>({ nome: 'teste', tipo: 'testee', status: true });
 
-	// const [contapagar, setContapagar] = useState<Array<ContaAPagar>>([]);
-	// const [contapagar, setContapagar] = useState<ContaAPagar>();
-
 	function handleSubmit(event: any) {
 		event.preventDefault();
 		setContaAPagar(new ContaAPagar(descricao, valor, planoEscolhido, data));
-
-		console.log('undefined?', getContaAPagar());
 	}
 
-	// useEffect(() => {
-	// 	console.log(contapagar);
-	// }, [contapagar]);
-
 	useEffect(() => {
+		console.log('undefined?', getContaAPagar());
 		getPlanoDeContas()
 			.then((data) => setPlanodecontas(data))
 			.catch();
