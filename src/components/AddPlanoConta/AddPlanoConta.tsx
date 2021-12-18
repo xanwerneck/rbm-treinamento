@@ -9,7 +9,7 @@ export default function AddPlanoConta() {
     const [seguraStatus, attStatus] = useState(false);
 
     const atualiza = () => {
-      
+
     }
 
     return(
@@ -23,11 +23,13 @@ export default function AddPlanoConta() {
 
             <input type = "text" value={seguraConta} title='Digite o Nome da Conta' />
 
-            <input type = "text"  title='Digite o Tipo da Conta'></input>
+            <br></br><br></br><br></br> 
 
-            <br></br><br></br><br></br>
+            <input type = "text" title='Digite o Tipo da Conta'></input>
 
-            <input type = "button">Adicionar</input>
+            <br></br><br></br><br></br> 
+
+            <input type = "button" value={"Adicionar"}/>
 
         </div>
 
