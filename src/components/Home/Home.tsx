@@ -8,14 +8,8 @@ export default function Home(){
                 <b>Consulta Saldo do Usuário</b>
             </p>
             <hr />
-            <VisualizarSaldo/><br></br>
-
-            <p>
-                <b>Adicionar Plano de Conta</b>
-            </p>
-            <hr />
-            <AddPlanoConta/> 
-            
+            <VisualizarSaldo/><br></br>     
+            <hr />     
         </div>
     )
 }
