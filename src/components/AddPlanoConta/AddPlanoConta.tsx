@@ -1,3 +1,7 @@
+import { useState } from "react";
+import { setPlanoDeContas } from "../../models/firestore/PlanoDeContasStore";
+import { IPlanoDeContas } from "../../models/interfaces/IPlanoDeContas";
+
 export default function AddPlanoConta() {
     
     // const [seguraDados, attDados] = useState(['',0,'']);
@@ -6,17 +10,24 @@ export default function AddPlanoConta() {
     {
         alert("Plano de Conta adicionado com Sucesso!")
     }
-    
+    const [seguraCod, attCod] = useState('');
+    const [seguraConta, attConta] = useState('');
+    const [seguraStatus, attStatus] = useState(false);
+
+    const atualiza = () => {
+
+    }
+
     return(
         <div>
             <label>Código da Conta</label>
             <br></br>
-            <input type = "text" name="EditCodigo" placeholder='Digite o Código da Conta'></input>
+            <input type = "text" name="EditCodigo" value={seguraCod} placeholder='Digite o Código da Conta'></input>
 
             <br></br><br></br>
             <label>Nome da Conta</label>
             <br></br>
-            <input type = "text" name="EditNome" placeholder='Digite o Nome da Conta'></input>
+            <input type = "text" name="EditNome" value={seguraConta} placeholder='Digite o Nome da Conta'></input>
 
             <br></br><br></br>
             <label>Status da Conta</label>
