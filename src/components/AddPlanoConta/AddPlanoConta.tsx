@@ -36,9 +36,9 @@ export default function AddPlanoConta() {
             <br></br><br></br>
             <label>Status da Conta</label>
             <br></br>
-            <select name="select" >
-                <option value="valor1" selected>True</option>
-                <option value="valor2">False</option>
+            <select name="select" onChange={(e)=>{attStatus(e.target.value == '1' ? true : false)}}>
+                <option value="1" selected>True</option>
+                <option value="1">False</option>
             </select>
             {/* <input type = "text" placeholder='Digite o Tipo da Conta'></input> */}
 
