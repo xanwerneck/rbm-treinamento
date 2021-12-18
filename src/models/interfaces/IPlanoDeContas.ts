@@ -1,5 +1,5 @@
 export interface IPlanoDeContas {
-    nome : string
-    tipo : string
-    status : boolean
+	nome: string;
+	tipo: string;
+	status: boolean;
 }

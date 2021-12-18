@@ -7,9 +7,9 @@ import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import Stack from '@mui/material/Stack';
 import { IPlanoDeContas } from '../../models/interfaces/IPlanoDeContas';
-import { getPlanoDeContas } from '../../models/firestore/PlanoDeContasStore';
+import { getContaAPagar, getPlanoDeContas, setContaAPagar } from '../../models/firestore/PlanoDeContasStore';
 
-interface IContasAPagar {
+export interface IContasAPagar {
 	descricao: string;
 	data: Date;
 	valor: number;
@@ -40,20 +40,19 @@ export default function AddContasAPagar() {
 	const [valor, setValor] = useState(0);
 	const [planoEscolhido, setPlanoEscolhido] = useState<IPlanoDeContas>({ nome: 'teste', tipo: 'testee', status: true });
 
-	const [contapagar, setContapagar] = useState<Array<ContaAPagar>>([]);
+	// const [contapagar, setContapagar] = useState<Array<ContaAPagar>>([]);
+	// const [contapagar, setContapagar] = useState<ContaAPagar>();
 
 	function handleSubmit(event: any) {
 		event.preventDefault();
-		// console.log(descricao);
-		// console.log(valor);
-		// console.log(contapagar);
-		// console.log(data);
-		setContapagar([...contapagar, new ContaAPagar(descricao, valor, planoEscolhido, data)]);
+		setContaAPagar(new ContaAPagar(descricao, valor, planoEscolhido, data));
+
+		console.log('undefined?', getContaAPagar());
 	}
 
-	useEffect(() => {
-		console.log(contapagar);
-	}, [contapagar]);
+	// useEffect(() => {
+	// 	console.log(contapagar);
+	// }, [contapagar]);
 
 	useEffect(() => {
 		getPlanoDeContas()
