@@ -30,9 +30,7 @@ const columns: GridColDef[] = [
 export default function Receitas() {
   const [rows, setRows] = React.useState([]);
 
-  async () => {
-    setRows(getReceitas());
-  };
+    // setRows(getReceitas());
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
