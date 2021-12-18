@@ -10,6 +10,7 @@ import Paper from '@mui/material/Paper';
 import { RMBTheme } from "../../themes/Theme";
 import { getPlanoDeContas } from '../../models/firestore/PlanoDeContasStore';
 import { firestoreDB } from '../../config/DataBase';
+import { getReceitas } from '../../models/firestore/ReceitasStore';
 
 
 
@@ -34,8 +35,8 @@ const rows = [
 
 export default function VisualizarSaldo() {
 
-  getPlanoDeContas();
-  console.log(getPlanoDeContas());
+  getReceitas();
+  console.log(getReceitas().valor);
 
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
