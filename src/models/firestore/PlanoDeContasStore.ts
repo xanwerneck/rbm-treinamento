@@ -3,10 +3,10 @@ import { firestoreDB } from '../../config/DataBase';
 import { IPlanoDeContas } from '../interfaces/IPlanoDeContas';
 
 export async function getPlanoDeContas() {
-    const planodecontas = collection(firestoreDB, 'planodecontas');
-    const planodecontasDocs = await getDocs(planodecontas);
-    const planodecontasList = planodecontasDocs.docs.map(doc => doc.data());
-    return planodecontasList;
+    const citiesCol = collection(firestoreDB, 'planodecontas');
+    const citySnapshot = await getDocs(citiesCol);
+    const cityList = citySnapshot.docs.map(doc => doc.data());
+    return cityList;
 }
 
 export async function setPlanoDeContas(planodecontas : IPlanoDeContas) {
