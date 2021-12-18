@@ -2,6 +2,17 @@ import { useState } from "react";
 import { setPlanoDeContas } from "../../models/firestore/PlanoDeContasStore";
 import { IPlanoDeContas } from "../../models/interfaces/IPlanoDeContas";
 
+class Placon implements IPlanoDeContas{
+  nome: string;
+  tipo: string;
+  status: boolean;
+  public constructor(_nome: string, _tipo: string, _status: boolean){
+      this.nome = _nome
+      this.tipo = _tipo
+      this.status = _status
+  }
+}
+
 export default function AddPlanoConta() {
     
     // const [seguraDados, attDados] = useState(['',0,'']);
@@ -17,7 +28,7 @@ export default function AddPlanoConta() {
     const opcao = [{value : true, label : "True"},{value : false, label : "False"}]
 
     const atualiza = () => {
-
+        setPlanoDeContas(new Placon)
     }
 
     return(
@@ -34,7 +45,7 @@ export default function AddPlanoConta() {
             <br></br><br></br>
             <label>Status da Conta</label>
             <br></br>
-            <select name="select">
+            <select name="select" >
                 <option value="valor1" selected>True</option>
                 <option value="valor2">False</option>
             </select>
