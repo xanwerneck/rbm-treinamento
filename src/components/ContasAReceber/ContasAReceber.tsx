@@ -4,6 +4,7 @@ import { UserContext } from "../../helpers/UserContext"
 import { setContasAReceberStore } from "../../models/firestore/ContasAReceverStore";
 import ContasAReceber from "../../models/ContasAReceber";
 import './ContasAReceber.css';
+import moment from "moment";
 
 export default function MainContasAReceber() {
 
@@ -11,7 +12,7 @@ export default function MainContasAReceber() {
 
     const [descricao, setDescricao] = useState('')
     const [data, setData] = useState(new Date())
-    const [status, setStatus] = useState(Boolean)
+    const [status, setStatus] = useState(Boolean (false))
     const [planoDeContas, setPlanoDeContas] = useState('')
     const [valor, setValor] = useState(0.0)
 
@@ -43,7 +44,8 @@ export default function MainContasAReceber() {
                     Descrição: <input type='text' value={descricao} name='descricao' onChange={(e) => setDescricao(e.target.value)} />
                 </label>
                 <label>
-                    Data: <input type='date' value={data.toString()} name='data'  onChange={(e) => setData(new Date(e.target.value))} />
+                    Data: <input type='date' value={moment(data).format('YYYY-MM-DD')} name='data'  onChange={(e) => setData(new Date(e.target.value))
+                    } />
                 </label>
                 <label>
                     Status: <input type='checkbox'  checked={status} name='status'  onChange={(e) => setStatus(!status)} />
