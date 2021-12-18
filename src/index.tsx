@@ -7,6 +7,8 @@ import { RMBTheme } from './themes/Theme';
 import { ThemeProvider } from '@mui/material';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ContasAPagar from './components/ContasAPagar/ContasAPagar';
+import Dashboard from './components/Dashboard/Dashboard';
+import ContasAReceber from './components/ContasAReceber/ContasAReceber';
 import Home from './components/Home/Home';
 import { UserContext } from './helpers/UserContext';
 import User from './models/User';
@@ -29,6 +31,12 @@ ReactDOM.render(
               <Route index element={<Home />} />
               <Route path="contasapagar">
                 <Route index element={<ContasAPagar />} />
+              </Route>
+              <Route path="contasareceber">
+                <Route index element={<ContasAReceber />} />
+              </Route>
+              <Route path="dashboard">
+                <Route index element={<Dashboard />} />
               </Route>
             </Route>
           </Routes>

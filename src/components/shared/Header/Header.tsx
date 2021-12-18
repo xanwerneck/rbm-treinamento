@@ -79,6 +79,16 @@ export default function Header () {
                         </ListItemButton>
                       </Link>
                     </ListItem>
+                    <ListItem disablePadding>
+                      <Link to="/dashboard">
+                        <ListItemButton onClick={handleClose}>
+                        <ListItemIcon onClick={handleClose}>                            
+                          <PriceCheck />
+                        </ListItemIcon>
+                        <ListItemText primary="Dashboard" />
+                        </ListItemButton>
+                      </Link>
+                    </ListItem>
                 </List>
               </Menu>
             </div>
