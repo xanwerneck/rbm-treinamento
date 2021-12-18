@@ -1,0 +1,27 @@
+name: React Frontend CI
+
+on:
+  push:
+    branches:
+      - develop-pipeline
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Test the frontend React ${{ matrix.node_version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node_version }}
+
+    - name: Running React tests
+      working-directory: "frontend"
+      run: |
+        npm ci
+        npm test
