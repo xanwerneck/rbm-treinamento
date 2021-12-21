@@ -1,0 +1,16 @@
+#formulario {
+    margin: 0 auto;
+    width: 1200px;
+    padding: 2em;
+    border: 3px solid #CCC;
+    border-radius: 1em;
+  }
+  
+  input {
+    margin-right: 20px;
+  }
+  
+  #tela {
+    height: 300px;
+  }
+  
