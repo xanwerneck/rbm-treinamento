@@ -1,7 +1,8 @@
 import * as React from "react";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridValueGetterParams,GridRenderCellParams } from "@mui/x-data-grid";
 import { getReceitas } from "../../models/firestore/ReceitasStore";
 import { IReceitas } from "../../models/interfaces/IReceitas";
+import BtnDelContasReceber from '../BtnDelContasReceber/BtnDelContasReceber';
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 90 },
@@ -25,6 +26,14 @@ const columns: GridColDef[] = [
     field: "valor",
     headerName: "Valor",
     width: 160,
+  },
+  {
+    field: 'acao',
+    headerName: 'Ação',
+    width: 150,
+    renderCell: (params: GridRenderCellParams<Date>) => (
+        <BtnDelContasReceber/>
+    ),
   },
 ];
 
