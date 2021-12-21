@@ -6,15 +6,16 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { IContas } from '../../models/interfaces/IContas';
 
-export default function BtnDelContasReceber(){
+export default function BtnDelContasReceber(props : {contas : IContas}){
     const [open, setOpen] = React.useState(false);
     const [sucesso, setSucesso] = React.useState(false);
     
-    const excluirUsuario = () => {
-        setOpen(false)
-        
+    const excluirConta = () => {
+        setOpen(false)        
         setSucesso(true);
+        props.contas.remove()
     }
 
     const handleClickOpen = () => {
@@ -48,7 +49,7 @@ export default function BtnDelContasReceber(){
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color = 'error'>Cancelar</Button>
-          <Button onClick={excluirUsuario} autoFocus>
+          <Button onClick={excluirConta} autoFocus>
             Continuar
           </Button>
         </DialogActions>
@@ -65,7 +66,7 @@ export default function BtnDelContasReceber(){
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-           Usuario foi excluido
+           Registro excluido
           </DialogContentText>
         </DialogContent>
         <DialogActions>

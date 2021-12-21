@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { UserContext } from '../../helpers/UserContext';
+import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
@@ -7,31 +6,42 @@ import Button from '@mui/material/Button';
 import SaveIcon from '@mui/icons-material/Save';
 import Stack from '@mui/material/Stack';
 import { IPlanoDeContas } from '../../models/interfaces/IPlanoDeContas';
-import { getContaAPagar, getPlanoDeContas, setContaAPagar } from '../../models/firestore/PlanoDeContasStore';
-import { ContaAPagar } from '../../models/ContaAPagar';
+import { ContasAPagar } from '../../models/ContasAPagar';
+import PlanoDeContas from '../../models/PlanoDeContas';
 
 export default function AddContasAPagar() {
-	const [planosdecontas, setPlanodecontas] = useState(new Array<IPlanoDeContas>()); // O que ta no banco
+	const [planosdecontas, setPlanodecontas] = useState(new Array<IPlanoDeContas>());
 
 	const [descricao, setDescricao] = useState('');
 	const [data, setData] = useState<Date>(new Date());
 	const [valor, setValor] = useState(0);
-	const [planoEscolhido, setPlanoEscolhido] = useState<IPlanoDeContas>({ nome: 'teste', tipo: 'testee', status: true });
+	const [planoEscolhido, setPlanoEscolhido] = useState('');
 
 	function handleSubmit(event: any) {
 		event.preventDefault();
-		setContaAPagar(new ContaAPagar(descricao, valor, planoEscolhido, data));
-		setData(new Date());
-		setDescricao('');
-		setValor(0);
-		setPlanoEscolhido({ nome: '', tipo: '', status: true });
+
+		let contas : ContasAPagar = new ContasAPagar(descricao, data, valor, planoEscolhido);
+		contas.create()
+		.then(() => {
+			alert('Contas a pagar cadastrado com sucesso!')
+			setData(new Date());
+			setDescricao('');
+			setValor(0);
+			setPlanoEscolhido('');
+		})
+		.catch(error => {
+			alert('Ocorreu um erro')
+		})
+		
 	}
 
 	useEffect(() => {
-		// console.log('undefined?', getContaAPagar());
-		getPlanoDeContas()
-			.then((data) => setPlanodecontas(data))
-			.catch();
+		const planoDeContas : PlanoDeContas = new PlanoDeContas('','')
+		planoDeContas.get()
+		.then(data => {
+			setPlanodecontas(data)
+		})
+		.catch(error => alert('Erro ao buscar os planos de contas'))
 	}, []);
 
 	return (
@@ -57,7 +67,6 @@ export default function AddContasAPagar() {
 						id='outlined-select-currency'
 						select
 						label='Tipo de Conta'
-						// defaultValue={planosdecontas[0].nome}
 						value={planoEscolhido}
 						onChange={(option: any) => setPlanoEscolhido(option.target.value)}
 						helperText='Selecione o tipo de conta'

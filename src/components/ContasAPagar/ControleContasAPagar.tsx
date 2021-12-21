@@ -1,24 +1,22 @@
 import * as React from 'react';
-import { getContasAPagar, setContasAPagar } from '../../models/firestore/ContasAPagar';
-import { IContasAPagar } from '../../models/interfaces/IContasAPagar';
 import { TableBody } from '@mui/material';
 import { TableCell } from '@mui/material';
 import { TableRow } from '@mui/material';
 import { TableHead } from '@mui/material';
 import { Table } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { IContas } from '../../models/interfaces/IContas';
+import { ContasAPagar } from '../../models/ContasAPagar';
+import BtnDelContasReceber from '../BtnDelContasReceber/BtnDelContasReceber';
 
-export default function DenseTable() {
-  const [contasPagar, setContasPagar] = React.useState(new Array<IContasAPagar>());
-
+export default function ControleContasAPagar() {
+  const [contasPagar, setContasPagar] = React.useState(new Array<IContas>());
+  
   React.useEffect(() => {
-
-    getContasAPagar()
-      .then(data => { 
-        setContasPagar(data)
-      })
-      .catch()
-
+    const contas : ContasAPagar = new ContasAPagar('', new Date(), 0, '')
+    contas.get()
+    .then(data => {setContasPagar(data)})
+    .catch(error => alert('Erro ao buscar lista de contas a pagar'))
   }, [])
 
   
@@ -35,9 +33,9 @@ export default function DenseTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {contasPagar.map((contas : IContasAPagar) => (
+          {contasPagar.map((contas : IContas, key : number) => (
             <TableRow
-              key={contas.descricao}
+              key={key}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
@@ -45,9 +43,9 @@ export default function DenseTable() {
               </TableCell>
               <TableCell align="right">{contas.data.toString()}</TableCell>
               <TableCell align="right">{contas.valor}</TableCell>
-              <TableCell align="right">{contas.planodecontas}</TableCell>
+              <TableCell align="right">{contas.tipo}</TableCell>
               <TableCell align="right">
-                <DeleteIcon onClick={() => setContasAPagar(contas)}/>
+                <BtnDelContasReceber contas={contas} />
               </TableCell>
             </TableRow>
           ))}

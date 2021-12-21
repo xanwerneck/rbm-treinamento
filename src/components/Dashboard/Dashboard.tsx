@@ -1,12 +1,36 @@
-import React from "react";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
-import CardActions from "@material-ui/core/CardActions";
 import './Dashboard.css';  
+import { Button, Card, CardActions, CardContent, Typography } from "@mui/material";
+import VisualizarSaldo from '../VisualizaSaldo/VisualizaSaldo';
+import { useEffect, useState } from 'react';
+import { ContasAReceber } from '../../models/ContasAReceber';
+import { ContasAPagar } from '../../models/ContasAPagar';
+import { IContas } from '../../models/interfaces/IContas';
 
-export default function DashQuadros() {
+export default function DashBoard() {
+  const [receitas, setReceitas] = useState(0)
+  const [despesas, setDespesas] = useState(0)
+
+  useEffect(() => {
+    const contasAReceber : ContasAReceber = new ContasAReceber('',new Date(),0,'')
+    contasAReceber.get()
+    .then(data => {
+      let rec = 0
+      data.map((conta : IContas) => {
+        rec += conta.valor
+      })
+      setReceitas(rec)
+    })
+
+    const contasAPagar : ContasAPagar = new ContasAPagar('',new Date(),0,'')
+    contasAPagar.get()
+    .then(data => {
+      let des = 0
+      data.map((conta : IContas) => {
+        des += conta.valor
+      })
+      setDespesas(des)
+    })
+  }, [])
   return (
     <div style={{}}>
       <h4>Dashboard</h4>
@@ -41,7 +65,7 @@ export default function DashQuadros() {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small"><b>R$ 0,00</b></Button>
+          <Button size="small"><b>R$ {despesas}</b></Button>
         </CardActions>
       </Card>
       <div id="separacao"></div>
@@ -75,10 +99,11 @@ export default function DashQuadros() {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small"><b>R$ 0,00</b></Button>
+          <Button size="small"><b>R$ {receitas}</b></Button>
         </CardActions>
-      </Card>
+      </Card>      
       </div>
+      <VisualizarSaldo receitas={receitas} despesas={despesas} />
     </div>
 
     

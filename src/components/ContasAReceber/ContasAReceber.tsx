@@ -1,37 +1,31 @@
-import { useContext, useEffect, useState } from "react"
-import { UserContext } from "../../helpers/UserContext"
-
-import { setContasAReceberStore } from "../../models/firestore/ContasAReceverStore";
-import ContasAReceber from "../../models/ContasAReceber";
+import { useState } from "react"
 import './ContasAReceber.css';
 import moment from "moment";
+import { ContasAReceber } from "../../models/ContasAReceber";
+import ControleContasAReceber from "./ControleContasAReceber";
 
 export default function MainContasAReceber() {
 
-    const [contas, setContas] = useState(new Array<ContasAReceber>())
-
     const [descricao, setDescricao] = useState('')
     const [data, setData] = useState(new Date())
-    const [status, setStatus] = useState(Boolean (false))
     const [planoDeContas, setPlanoDeContas] = useState('')
     const [valor, setValor] = useState(0.0)
 
     const enviar = (e: React.FormEvent) => {
         e.preventDefault()
-        const conta: ContasAReceber = new ContasAReceber(descricao, data, status, planoDeContas, valor)
+        const conta: ContasAReceber = new ContasAReceber(descricao, data, valor, planoDeContas)
 
-        setContasAReceberStore(
-            new ContasAReceber(descricao, data, status, planoDeContas, valor)
-        )
-
-        setContas([...contas, conta])
-        setData(new Date())
-        setDescricao('')
-        setStatus(Boolean)
-        setPlanoDeContas('')
-        setValor(0)
-
-        console.log(contas);
+        conta.create()
+        .then(data => {
+            alert('Contas a Receber criado com sucesso')
+            setData(new Date())
+            setDescricao('')
+            setPlanoDeContas('')
+            setValor(0)
+        })
+        .catch(error => {
+            alert('Erro ao criar contas a receber')
+        })
     }
 
 
@@ -48,21 +42,17 @@ export default function MainContasAReceber() {
                     } />
                 </label>
                 <label>
-                    Status: <input type='checkbox'  checked={status} name='status'  onChange={(e) => setStatus(!status)} />
-                </label>
-                <label>
                     Planos De Conta: <input type='text' value={planoDeContas}  name='planoDeContas'  onChange={(e) => setPlanoDeContas(e.target.value)} />
                 </label>
                 <label>
-                    Valor: <input type='text' name='valor'  value={valor} onChange={(e) => setValor(parseFloat(e.target.value))}/>
+                    Valor: <input type='number' name='valor'  value={valor} onChange={(e) => setValor(parseFloat(e.target.value))}/>
                 </label>
-
                 <button name='salvar' type='submit'>
                     Salvar
                 </button>
-
             </form>
             </div>
+            <ControleContasAReceber/>
         </>
     )
 }

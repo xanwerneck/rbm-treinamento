@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { setPlanoDeContas, getPlanoDeContas } from "../../models/firestore/PlanoDeContasStore";
 import PlanoDeContas from "../../models/PlanoDeContas"
 import { Link } from "react-router-dom";
 
@@ -9,21 +8,16 @@ const style = {
   borderRadius: 5
 }
 
-export default function AddPlanoConta() {
-    
-    // const [seguraDados, attDados] = useState(['',0,'']);
-    
-    function funcao1()
-    {
-        alert("Plano de Conta adicionado com Sucesso!")
-    }
+export default function AddPlanoConta() 
+{
     const [seguraCod, attCod] = useState('');
     const [seguraConta, attConta] = useState('');
-    const [seguraStatus, attStatus] = useState(true);
 
     const atualiza = () => {
-        const att = setPlanoDeContas(new PlanoDeContas(seguraConta, seguraCod, seguraStatus));
-        alert('Plano de Conta adicionado com Sucesso!');
+        const plano : PlanoDeContas = new PlanoDeContas(seguraConta, seguraCod)
+        plano.create()
+        .then(data => alert('Plano de conta adicionado com sucesso'))
+        .catch(error => alert('Erro ao adicionar o plano de contas'))
     }
 
     return(
@@ -40,17 +34,12 @@ export default function AddPlanoConta() {
             <br></br><br></br>
             <label>Status da Conta</label>
             <br></br>
-            <select name="select" onChange={(e)=>{attStatus(e.target.value == '1' ? true : false)}}>
-                <option value="1">True</option>
-                <option value="2">False</option>
-            </select>
-            {/* <input type = "text" placeholder='Digite o Tipo da Conta'></input> */}
 
-            <br></br><br></br>
-
-            <input type = "button" onClick={atualiza} value={"              Adicionar              "}/>
+            <button onClick={atualiza}>
+                Adicionar
+            </button>
             <label style={style}>
-              <Link to={'/'}> Voltar </Link>
+              <Link to={'/'}> Voltar para a Home </Link>
             </label>
         </div>
 
