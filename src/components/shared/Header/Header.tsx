@@ -1,7 +1,7 @@
 import { AppBar, Avatar, Box, IconButton, List, ListItem, ListItemButton, 
     ListItemIcon, ListItemText, Menu, Toolbar } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { AccountCircle, MoneyOff, PriceCheck } from "@mui/icons-material";
+import { AccountBalanceWallet, AccountCircle, MoneyOff, PriceCheck } from "@mui/icons-material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -76,6 +76,26 @@ export default function Header () {
                           <PriceCheck />
                         </ListItemIcon>
                         <ListItemText primary="Contas a receber" />
+                        </ListItemButton>
+                      </Link>
+                    </ListItem>
+                    <ListItem disablePadding>
+                      <Link to="/plano-contas">
+                        <ListItemButton onClick={handleClose}>
+                        <ListItemIcon onClick={handleClose}>                            
+                          <AccountBalanceWallet />
+                        </ListItemIcon>
+                        <ListItemText primary="Plano de contas" />
+                        </ListItemButton>
+                      </Link>
+                    </ListItem>
+                    <ListItem disablePadding>
+                      <Link to="/dashboard">
+                        <ListItemButton onClick={handleClose}>
+                        <ListItemIcon onClick={handleClose}>                            
+                          <PriceCheck />
+                        </ListItemIcon>
+                        <ListItemText primary="Dashboard" />
                         </ListItemButton>
                       </Link>
                     </ListItem>
